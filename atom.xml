@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://lyf.github.io</id>
+    <id>https://lyf3.github.io</id>
     <title>Gridea</title>
-    <updated>2020-05-10T05:50:26.174Z</updated>
+    <updated>2020-05-10T06:09:40.640Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://lyf.github.io"/>
-    <link rel="self" href="https://lyf.github.io/atom.xml"/>
+    <link rel="alternate" href="https://lyf3.github.io"/>
+    <link rel="self" href="https://lyf3.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://lyf.github.io/images/avatar.png</logo>
-    <icon>https://lyf.github.io/favicon.ico</icon>
+    <logo>https://lyf3.github.io/images/avatar.png</logo>
+    <icon>https://lyf3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[测试]]></title>
-        <id>https://lyf.github.io/post/ce-shi/</id>
-        <link href="https://lyf.github.io/post/ce-shi/">
+        <id>https://lyf3.github.io/post/ce-shi/</id>
+        <link href="https://lyf3.github.io/post/ce-shi/">
         </link>
         <updated>2020-05-09T10:01:24.000Z</updated>
         <content type="html"><![CDATA[<p>测试文章</p>
