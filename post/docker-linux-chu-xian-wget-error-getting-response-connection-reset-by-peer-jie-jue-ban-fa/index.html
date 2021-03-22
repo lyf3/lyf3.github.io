@@ -30,29 +30,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            知识分享
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -97,34 +77,54 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-line"></i> NAS
-        </h2>
-        
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-      <a href="https://xinkl.cc/post/nas-ce-shi/" class="feature-image-wrapper bg-gray-100 rounded-lg flex-shrink-0 mr-8 w-full h-56 h-32 md:w-56 md:h-40">
-        <div class="post-feature-image lazy w-full h-56 h-32 md:w-56 md:h-40" data-bg="'https://xinkl.cc/post-images/nas-ce-shi.png'">
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">docker Linux出现wget: error getting response: Connection reset by peer 解决办法</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-03-22 / 1 min read
         </div>
-      </a>
-    
-    <div class="content">
-      <a href="https://xinkl.cc/post/nas-ce-shi/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">NAS测试</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        <p>测试时间</p>
+        
+        <div class="post-content yue">
+          <p>此文章解决AlpineLinx出现wget: error getting response: Connection reset by peer 的方法。</p>
+<p>此问题出现在全新安装的AlpineLinux上，具体表现为wget文件时，如果是http链接，可以正常wget到，如果是https链接，就会提示wget: error getting response: Connection reset by peer。</p>
+<p>类似于此图：</p>
+<p>cikeblog:~# wget cikeblog.com/s/alpiness.sh<br>
+Connecting to cikeblog.com (159.138.1.106:80)<br>
+Connecting to cikeblog.com (159.138.1.106:443)<br>
+wget: error getting response: Connection reset by peer<br>
+解决办法：<br>
+apk update<br>
+apk add ca-certificates<br>
+update-ca-certificates<br>
+apk --no-cache add openssl wget<br>
+Alpine终端执行以上代码后，即可wget到https链接的文件。</p>
+<p>过程：首先怀疑是证书问题，安装ca-certificates证书，问题复现，然后重新安装一下wget，问题解决。</p>
+<p>参考文章：https://github.com/Yelp/dumb-init/issues/73</p>
 
-      </div>
-      <div class="text-gray-400 text-sm font-light">2020-05-10 / 1 min read</div>
-    </div>
-  </section>
+        </div>
 
-        <div class="pagination-container animated fadeIn">
-  
-  
-</div>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/G1ShdQkHv/">
+            <span class="flex-auto">Docker</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/aruba-ap-ju-yu-wang-wu-fa-zheng-chang-sou-suo-nasairplay-wu-fa-shi-yong-jie-jue-fang-fa/">
+                <h3 class="post-title">
+                  Aruba AP 局域网无法正常搜索NAS/AirPlay无法使用解决方法
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
 
       </div>
     </div>

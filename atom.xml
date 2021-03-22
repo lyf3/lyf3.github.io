@@ -2,14 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xinkl.cc</id>
     <title>lyf</title>
-    <updated>2020-08-04T06:08:42.924Z</updated>
+    <updated>2021-03-22T14:14:00.984Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xinkl.cc"/>
     <link rel="self" href="https://xinkl.cc/atom.xml"/>
     <subtitle>知识分享</subtitle>
     <logo>https://xinkl.cc/images/avatar.png</logo>
     <icon>https://xinkl.cc/favicon.ico</icon>
-    <rights>All rights reserved 2020, lyf</rights>
+    <rights>All rights reserved 2021, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[docker Linux出现wget: error getting response: Connection reset by peer 解决办法]]></title>
+        <id>https://xinkl.cc/post/docker-linux-chu-xian-wget-error-getting-response-connection-reset-by-peer-jie-jue-ban-fa/</id>
+        <link href="https://xinkl.cc/post/docker-linux-chu-xian-wget-error-getting-response-connection-reset-by-peer-jie-jue-ban-fa/">
+        </link>
+        <updated>2021-03-22T13:39:26.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Aruba AP 局域网无法正常搜索NAS/AirPlay无法使用解决方法]]></title>
         <id>https://xinkl.cc/post/aruba-ap-ju-yu-wang-wu-fa-zheng-chang-sou-suo-nasairplay-wu-fa-shi-yong-jie-jue-fang-fa/</id>
