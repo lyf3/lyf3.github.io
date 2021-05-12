@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xinkl.cc</id>
     <title>lyf</title>
-    <updated>2021-05-09T06:51:56.611Z</updated>
+    <updated>2021-05-12T14:15:53.882Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xinkl.cc"/>
     <link rel="self" href="https://xinkl.cc/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://xinkl.cc/images/avatar.png</logo>
     <icon>https://xinkl.cc/favicon.ico</icon>
     <rights>All rights reserved 2021, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[小米门窗传感器改造 xiaomi sensor]]></title>
+        <id>https://xinkl.cc/post/xiao-mi-men-chuang-chuan-gan-qi-gai-zao-xiaomi-sensor/</id>
+        <link href="https://xinkl.cc/post/xiao-mi-men-chuang-chuan-gan-qi-gai-zao-xiaomi-sensor/">
+        </link>
+        <updated>2021-05-12T14:01:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[博客文章推荐]]></title>
+        <id>https://xinkl.cc/post/bo-ke-wen-zhang-tui-jian/</id>
+        <link href="https://xinkl.cc/post/bo-ke-wen-zhang-tui-jian/">
+        </link>
+        <updated>2021-05-09T07:08:59.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Gridea写作代码小知识]]></title>
         <id>https://xinkl.cc/post/wang-ye-dai-ma/</id>
