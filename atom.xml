@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xinkl.cc</id>
     <title>lyf</title>
-    <updated>2021-05-29T09:54:42.527Z</updated>
+    <updated>2021-06-07T15:30:22.575Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xinkl.cc"/>
     <link rel="self" href="https://xinkl.cc/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://xinkl.cc/images/avatar.png</logo>
     <icon>https://xinkl.cc/favicon.ico</icon>
     <rights>All rights reserved 2021, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[mac使用Shell(终端)SSH连接远程服务器]]></title>
+        <id>https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/</id>
+        <link href="https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/">
+        </link>
+        <updated>2021-06-07T15:28:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[群晖NAS删除文件不释放空间的原因和方法；没用容量硬盘就提示「磁盘空间即将不足」解决办法；]]></title>
+        <id>https://xinkl.cc/post/qun-hui-nas-shan-chu-wen-jian-bu-shi-fang-kong-jian-de-yuan-yin-he-fang-fa-mei-yong-rong-liang-ying-pan-jiu-ti-shi-ci-pan-kong-jian-ji-jiang-bu-zu-jie-jue-ban-fa/</id>
+        <link href="https://xinkl.cc/post/qun-hui-nas-shan-chu-wen-jian-bu-shi-fang-kong-jian-de-yuan-yin-he-fang-fa-mei-yong-rong-liang-ying-pan-jiu-ti-shi-ci-pan-kong-jian-ji-jiang-bu-zu-jie-jue-ban-fa/">
+        </link>
+        <updated>2021-06-07T15:23:44.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小米门窗传感器改造 xiaomi sensor]]></title>
         <id>https://xinkl.cc/post/xiao-mi-men-chuang-chuan-gan-qi-gai-zao-xiaomi-sensor/</id>

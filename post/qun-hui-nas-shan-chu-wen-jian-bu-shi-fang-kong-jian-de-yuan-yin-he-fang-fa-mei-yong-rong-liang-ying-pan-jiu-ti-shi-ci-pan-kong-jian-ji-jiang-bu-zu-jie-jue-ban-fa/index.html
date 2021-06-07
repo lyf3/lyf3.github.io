@@ -33,17 +33,7 @@
             文章目录
           </p>
           <div class="toc-container hidden lg:block">
-            <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E7%AB%99">🏠 关于本站</a></li>
-<li><a href="#%E5%8D%9A%E4%B8%BB%E6%98%AF%E8%B0%81">👨‍💻 博主是谁</a></li>
-<li><a href="#%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD">⛹ 兴趣爱好</a></li>
-<li><a href="#%E8%81%94%E7%B3%BB%E6%88%91%E5%91%80">📬 联系我呀</a></li>
-</ul>
-</li>
-</ul>
-
+            
           </div>
         </div>
       
@@ -88,29 +78,55 @@
 <div class="mask" onclick="closeMenu()">
 </div>
       <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
-        <h1 class="text-3xl font-bold lg:mt-16">关于</h1>
+        <h1 class="text-3xl font-bold lg:mt-16">群晖NAS删除文件不释放空间的原因和方法；没用容量硬盘就提示「磁盘空间即将不足」解决办法；</h1>
         <div class="text-sm text-gray-700 lg:my-8">
-          2019-01-25 / 1 min read
+          2021-06-07 / 2 min read
         </div>
         
         <div class="post-content yue">
-          <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>有任何疑问可以邮箱联系我：naslyf@qq.com</p>
+          <p>1.删除了文件没清理回收站</p>
+<p>1.控制面板-系统-计划任务-新增计划任务-回收站 默认就行，每天0点自动清理。或直接手动清理即可。<br>
+2.控制面板-共享文件夹-动作-清空所有的回收站。<br>
+<img src="https://xinkl.cc/post-images/1623079610417.jpg" alt="" loading="lazy"></p>
+<p>2.同步软件版本控制一般设置5即可，有些同步软件即使删除了原文件和清空了回收站，但空间还是没有释放，因为有历史版本自动备份。如driver，cloud station等。</p>
+<p>可以控制面板-终端启用ssh服务。用putty,xshell等软件连接服务器，用root登录服务器。</p>
+<p>cd /volume1 [按 Enter] (变更目录到 /volume1 或您需要的目录)</p>
+<p>du -h -d 1 [按 Enter] (列出第一层子文件夹所占用的空间)</p>
+<p>通过此方式您即可找出哪个文件夹或档案占用了大量的磁盘空间。如果 @cloudstation  文件夹占用了很多空间，请停止通过 Cloud Station 来同步您的共享文件夹。如果@synlogydriver文件夹专用了很多空间，可以通过driver管理控制台 ，先计算使用空间，通过 版本资源管理器，操作-清除版本数据库即可释放空间。注意查看角色是不是你删除文件的用户，切换到你删除过文件的用户下。操作-显示删除文件，会发现刚才删除的文件还存在。没有彻底删除掉。可通过清除版本数据库即可释放空间。<br>
+<img src="https://xinkl.cc/post-images/1623079560001.jpg" alt="" loading="lazy"></p>
+<p>可以适当的设置几个版本，在团队文件夹下-版本控制-设置5个以下即可。</p>
+<p>注：如果使用linux命令删除文件，资料将会丢失，请慎用！</p>
 
         </div>
 
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/nBoMZLS1X/">
+            <span class="flex-auto">NAS</span>
+          </a>
         
 
 
         <div class="flex justify-between py-8">
           
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  mac使用Shell(终端)SSH连接远程服务器
+                </h3>
+              </a>
+            </div>
+          
 
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/xiao-mi-men-chuang-chuan-gan-qi-gai-zao-xiaomi-sensor/">
+                <h3 class="post-title">
+                  小米门窗传感器改造 xiaomi sensor
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
           
         </div>
 
