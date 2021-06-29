@@ -30,29 +30,9 @@
       
         <div class="animated fadeInLeft" style="animation-delay: 0.4s">
           <p class="my-4 text-gray-600 font-light hidden lg:block">
-            知识分享
+            文章目录
           </p>
-          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
+          <div class="toc-container hidden lg:block">
             
           </div>
         </div>
@@ -97,28 +77,68 @@
 </div>
 <div class="mask" onclick="closeMenu()">
 </div>
-      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
-        <h2 class="text-lg text-gray-700 mb-8">
-          <i class="ri-bookmark-line"></i> NAS
-        </h2>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">KMS服务~一句命令激活windows/office</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-06-29 / 2 min read
+        </div>
         
-  <section class="post-item md:flex pb-12 animated fadeIn" :style="{ 'animation-delay': `${0 * 0.2}s` }">
-    
-    <div class="content">
-      <a href="https://xinkl.cc/post/qun-hui-nas-shan-chu-wen-jian-bu-shi-fang-kong-jian-de-yuan-yin-he-fang-fa-mei-yong-rong-liang-ying-pan-jiu-ti-shi-ci-pan-kong-jian-ji-jiang-bu-zu-jie-jue-ban-fa/">
-        <h2 class="post-title text-xl font-extrabold mt-5 md:mt-0">群晖NAS删除文件不释放空间的原因和方法；没用容量硬盘就提示「磁盘空间即将不足」解决办法；</h2>
-      </a>
-      <div class="post-abstract text-gray-700 font-light my-4">
-        
-      </div>
-      <div class="text-gray-400 text-sm font-light">2021-06-07 / 2 min read</div>
-    </div>
-  </section>
+        <div class="post-content yue">
+          <p>使用管理员权限运行cmd执行<br>
+<code>slmgr /skms kms.03k.org</code></p>
+<p>这句命令的意思是，把kms服务器地址设置（set kms）为kms.03k.org.</p>
+<p><code>slmgr /ato</code></p>
+<p>对于下面列表里面含有的产品的VL版本或者能使用key进入kms通道的产品，都支持使用kms激活。另外对于Window7，如果你的bios含有slic表，会有无法使用kms的情况。<br>
+office2016 https://technet.microsoft.com/zh-cn/library/dn385360(v=office.16).aspx<br>
+office2013 https://technet.microsoft.com/ZH-CN/library/dn385360.aspx<br>
+office2010 https://technet.microsoft.com/ZH-CN/library/ee624355(v=office.14).aspx<br>
+Server/Windows https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys</p>
+<p>命令查看系统版本：<br>
+<code>wmic os get caption</code><br>
+得到对应key之后，使用管理员权限运行cmd执行安装key：<br>
+<code>slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx</code></p>
+<p>一句命令激活OFFICE<br>
+首先你的OFFICE必须是VOL版本，否则无法激活。<br>
+找到你的office安装目录，比如C:\Program Files (x86)\Microsoft Office\Office16</p>
+<p>64位的就是C:\Program Files\Microsoft Office\Office16</p>
+<p>office16是office2016，office15就是2013，office14就是2010.</p>
+<p>然后目录对的话，该目录下面应该有个OSPP.VBS。</p>
+<p>接下来我们就cd到这个目录下面，例如（请更改为自己的实际安装目录）：</p>
+<p><code>cd &quot;C:\Program Files (x86)\Microsoft Office\Office16&quot;</code></p>
+<p>如果你不知道你的office装在哪个目录，可以打开一个程序比如word，然后用打开任务管理员右键选择“打开文件所在的位置”。</p>
+<p>然后执行注册kms服务器地址：<br>
+<code>cscript ospp.vbs /sethst:kms.03k.org</code></p>
+<p>/sethst参数就是指定kms服务器地址。<br>
+一般ospp.vbs可以拖进去cmd窗口，所以也可以这么弄：<br>
+<code>cscript &quot;C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS&quot; /sethst:kms.03k.org</code></p>
+<p>一般来说，“一句命令已经完成了”，但一般office不会马上连接kms服务器进行激活，所以我们额外补充一条手动激活命令：<br>
+<code>cscript ospp.vbs /act</code></p>
 
-        <div class="pagination-container animated fadeIn">
-  
-  
-</div>
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/-UlabOVic/">
+            <span class="flex-auto">Windows</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/">
+                <h3 class="post-title">
+                  mac使用Shell(终端)SSH连接远程服务器
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
 
       </div>
     </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xinkl.cc</id>
     <title>lyf</title>
-    <updated>2021-06-07T15:30:22.575Z</updated>
+    <updated>2021-06-29T08:28:15.685Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xinkl.cc"/>
     <link rel="self" href="https://xinkl.cc/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://xinkl.cc/images/avatar.png</logo>
     <icon>https://xinkl.cc/favicon.ico</icon>
     <rights>All rights reserved 2021, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[KMS服务~一句命令激活windows/office]]></title>
+        <id>https://xinkl.cc/post/ben-zhan-shang-xian-kms-fu-wu-~yi-ju-ming-ling-ji-huo-windowsoffice/</id>
+        <link href="https://xinkl.cc/post/ben-zhan-shang-xian-kms-fu-wu-~yi-ju-ming-ling-ji-huo-windowsoffice/">
+        </link>
+        <updated>2021-06-29T08:15:20.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[mac使用Shell(终端)SSH连接远程服务器]]></title>
         <id>https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/</id>
