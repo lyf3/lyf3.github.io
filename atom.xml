@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://xinkl.cc</id>
+    <title>lyf</title>
+    <updated>2024-02-02T13:01:54.618Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://xinkl.cc"/>
+    <link rel="self" href="https://xinkl.cc/atom.xml"/>
+    <subtitle>知识分享</subtitle>
+    <logo>https://xinkl.cc/images/avatar.png</logo>
+    <icon>https://xinkl.cc/favicon.ico</icon>
+    <rights>All rights reserved 2024, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[macos 14.2.1 壁纸路径]]></title>
+        <id>https://xinkl.cc/post/macos-1421-bi-zhi-lu-jing/</id>
+        <link href="https://xinkl.cc/post/macos-1421-bi-zhi-lu-jing/">
+        </link>
+        <updated>2024-02-02T12:57:28.000Z</updated>
+        <content type="html"><![CDATA[<p>搜索  command+shift+g</p>
+<p>安装壁纸<br>
+安装壁纸的方法非常简单，只需要前往以下路径</p>
+<p>/Library/Application Support/com.apple.idleassetsd/Customer/4KSDR240FPS</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Aruba AP 无法正常连接HOMEKIT解决办法]]></title>
+        <id>https://xinkl.cc/post/aruba-ap-wu-fa-zheng-chang-lian-jie-homekit-jie-jue-ban-fa/</id>
+        <link href="https://xinkl.cc/post/aruba-ap-wu-fa-zheng-chang-lian-jie-homekit-jie-jue-ban-fa/">
+        </link>
+        <updated>2024-01-30T10:24:30.000Z</updated>
+        <content type="html"><![CDATA[<p>按解决方案，按 1 2 3操作 即可正常连接HomeKit设备。有些Aruba系统版本只要操作方法1、3即可<br>
+问题症状：手机连接HomeKit设备的时候一直会出现以下几种问题：<br>
+1.无法接入网络<br>
+2.配件已经加入其他家庭<br>
+<img src="https://xinkl.cc/post-images/1706610667462.JPG" alt="" loading="lazy"><br>
+<img src="https://xinkl.cc/post-images/1706610674143.PNG" alt="" loading="lazy"></p>
+<p>方法一：关闭广播组（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611069799.png" alt="" loading="lazy"></p>
+<p>方法二：关闭Aruba 防火墙（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611121477.png" alt="" loading="lazy"></p>
+<p>方法三：开启对应的服务（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611238189.png" alt="" loading="lazy"></p>
+<p>方法四：开启 igmp snooping（论坛找到的办法，但是暂时没找到设置的地方）</p>
+<p><a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=9207&amp;extra=&amp;page=2&amp;mobile=no">https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=9207&amp;extra=&amp;page=2&amp;mobile=no</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[避风港]]></title>
+        <id>https://xinkl.cc/post/bi-feng-gang/</id>
+        <link href="https://xinkl.cc/post/bi-feng-gang/">
+        </link>
+        <updated>2023-12-17T14:29:14.000Z</updated>
+        <content type="html"><![CDATA[<p>哪有什么避风港，风来了我就慢慢走，雨来了我就靠边走，打雷了我就捂着耳朵走。我一个人走了好久好久，我想把孩子教育好。也想把父母照顾好，还想把婚姻经营好，我想赚很多很多的钱，我想把什么都照顾好，可我什么都没有顾到，上有老不常伴左右，下有小不陪伴起成长。终有伴无心，好言三句，外有友却不能一醉方休。人到一定岁数，自己就是自己的屋檐，再也无法找到地方躲雨。</p>
+<p>规模变化一定不是为了驱利，而是水到渠成。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[文件夹权限 chmod 递归 mac 命令]]></title>
+        <id>https://xinkl.cc/post/wen-jian-jia-quan-xian-chmod-di-gui-mac-ming-ling/</id>
+        <link href="https://xinkl.cc/post/wen-jian-jia-quan-xian-chmod-di-gui-mac-ming-ling/">
+        </link>
+        <updated>2023-12-11T13:58:17.000Z</updated>
+        <content type="html"><![CDATA[<p>在 Mac 中，可以使用 chmod 命令对文件夹及其子文件夹和文件进行权限设置。</p>
+<p>递归设置权限的命令格式为：</p>
+<pre><code>chmod -R [权限设置] [文件夹路径]
+</code></pre>
+<p>例如，如果要给文件夹 /Users/username/test 和其所有子文件夹和文件赋予所有用户可读取权限，可以使用以下命令：</p>
+<pre><code>chmod -R 755 /Users/username/test
+</code></pre>
+<p>如果想要将文件夹和文件的所有权限赋给某个用户和用户组可读取权限，可以使用</p>
+<pre><code>chmod -R 770 /Users/username/test
+</code></pre>
+<p>如果想要具体了解更多权限设置，可以使用 mac chmod 查看。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MACOS 电脑 Adobe软件弹出访问钥匙串密码问题]]></title>
+        <id>https://xinkl.cc/post/adobe-ruan-jian-dan-chu-fang-wen-yao-chi-chuan-mi-ma-wen-ti/</id>
+        <link href="https://xinkl.cc/post/adobe-ruan-jian-dan-chu-fang-wen-yao-chi-chuan-mi-ma-wen-ti/">
+        </link>
+        <updated>2023-11-30T00:52:08.000Z</updated>
+        <content type="html"><![CDATA[<p>症状：</p>
+<pre><code>！打开Adobe软件后，疯狂弹出对话框要求输入钥匙串访问密码计
+</code></pre>
+<pre><code>解决方案：
+1.聚焦搜索“钥匙串访问”
+2.左侧边栏点击“登录”
+3.在右侧找到以“Adobe App info”开头的项目，通常有3个，全部删除
+4.找到“Adobe User info”删除
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macos M1以上设备，开启允许从以下位置下载的应用程序（任何来源）功能]]></title>
+        <id>https://xinkl.cc/post/macos-m1-yi-shang-she-bei-kai-qi-yun-xu-cong-yi-xia-wei-zhi-xia-zai-de-ying-yong-cheng-xu-ren-he-lai-yuan-gong-neng/</id>
+        <link href="https://xinkl.cc/post/macos-m1-yi-shang-she-bei-kai-qi-yun-xu-cong-yi-xia-wei-zhi-xia-zai-de-ying-yong-cheng-xu-ren-he-lai-yuan-gong-neng/">
+        </link>
+        <updated>2023-11-22T07:34:44.000Z</updated>
+        <content type="html"><![CDATA[<p>1.总段输入这段代码，然后在输入密码即可。</p>
+<p>sudo spctl --master-disable</p>
+<p>注意事项<br>
+如果是最新的macOS 10.15及以上，<br>
+开启了允许任何来源，有些软件还是会报损坏，<br>
+这时候则需要进行以下操作：<br>
+以这种特权的命令去授予某个应用允许运行</p>
+<pre><code># sudo xattr -r -d com.apple.quarantine
+
+sudo xattr -r -d com.apple.quarantine 应用路径
+
+# 比如我装M1版本的语雀
+sudo xattr -rd com.apple.quarantine /Applications/语雀.app
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macOS Ventura蓝牙重置方法，解決滑鼠卡頓問題。macos 蓝牙各种问题解决办法]]></title>
+        <id>https://xinkl.cc/post/macos-ventura-lan-ya-chong-zhi-fang-fa-jie-jue-hua-shu-qia-dun-wen-ti-macos-lan-ya-duan-lian-wen-wen-ti/</id>
+        <link href="https://xinkl.cc/post/macos-ventura-lan-ya-chong-zhi-fang-fa-jie-jue-hua-shu-qia-dun-wen-ti-macos-lan-ya-duan-lian-wen-wen-ti/">
+        </link>
+        <updated>2023-10-24T00:55:31.000Z</updated>
+        <content type="html"><![CDATA[<p>方法：一<br>
+开启终端机，并输入sudo pkill bluetoothd，当输入完毕后，再输入电脑的管理员密码，输入完毕后，这时候鼠标就会出现中断。<br>
+<img src="https://xinkl.cc/post-images/1698109070144.jpeg" alt="" loading="lazy"><br>
+当蓝牙重置完毕后，随即滑鼠又会自动连线。</p>
+<p>方法：二</p>
+<ol>
+<li>打开终端输入：sudo rm /Library/Preferences/com.apple.Bluetooth.plist  （删除蓝牙配置文件）<br>
+提示需要输入密码，输入密码后，用下一段命令</li>
+<li>sudo pkill bluetoothd （断开蓝牙）</li>
+<li>（重启电脑设备，在测试一两天确认是否还会出现蓝牙断联这些问题）</li>
+</ol>
+<p>原文：<a href="https://www.minwt.com/mac/23972.html">https://www.minwt.com/mac/23972.html</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mac ssh时报错WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED]]></title>
+        <id>https://xinkl.cc/post/mac-ssh-shi-bao-cuo-warning-remote-host-identification-has-changed/</id>
+        <link href="https://xinkl.cc/post/mac-ssh-shi-bao-cuo-warning-remote-host-identification-has-changed/">
+        </link>
+        <updated>2023-07-30T16:16:16.000Z</updated>
+        <content type="html"><![CDATA[<p>Mac ssh时报错WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</p>
+<pre><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:Z0O3MWVzRTmyZtixzbm8sUHAHsygdftbPrWZcme8ZGo.
+Please contact your system administrator.
+Add correct host key in /Users/cedric/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /Users/cedric/.ssh/known_hosts:4
+Host key for 192.168.1.112 has changed and you have requested strict checking.
+Host key verification failed.
+</code></pre>
+<p>解决方案：</p>
+<p>找到.ssh文件夹，一般默认地址在Users/cedric/中(cedric替换为本机用户名)<br>
+删除本机 .ssh/known_hosts文件中关于192.168.1.112（你需要连接的IP地址）公钥信息<br>
+或者直接删除.ssh/known_hosts文件<br>
+重新ssh，成功连接<br>
+————————————————</p>
+<pre><code>The authenticity of host '192.168.1.112 (192.168.1.112)' can't be established.
+ED25519 key fingerprint is SHA256:bkLYG6xrnor0PIEYpdYd+gi4AbHiBSMFj1OoWUzVNGk.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</code></pre>
+<pre><code>Warning: Permanently added '192.168.1.112' (ED25519) to the list of known hosts.
+nvidia@192.168.1.112's password: 
+</code></pre>
+<pre><code>Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.9.140-tegra aarch64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, you can run the 'unminimize' command.
+
+646 packages can be updated.
+370 updates are security updates.
+
+New release '20.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Wed Apr  6 09:54:56 2022 from 192.168.1.204
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[home assistant 版本]]></title>
+        <id>https://xinkl.cc/post/home-assistant-ban-ben/</id>
+        <link href="https://xinkl.cc/post/home-assistant-ban-ben/">
+        </link>
+        <updated>2023-04-15T13:57:02.000Z</updated>
+        <content type="html"><![CDATA[<p>0.108.9<br>
+文件夹名称 homeassistant2020<br>
+ldm</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[土区iCloud设置]]></title>
+        <id>https://xinkl.cc/post/tu-qu-icloud-she-zhi/</id>
+        <link href="https://xinkl.cc/post/tu-qu-icloud-she-zhi/">
+        </link>
+        <updated>2023-01-07T13:01:26.000Z</updated>
+        <content type="html"><![CDATA[<p>1.一定需要土区邀请国区才能正常使用iCloud 2T<br>
+测试可以国区做主号，直接 家人共享  然后面对面 共享 拉 土区。土区在点iCloud共享给国区</p>
+<figure data-type="image" tabindex="1"><img src="https://xinkl.cc/post-images/1673096513912.PNG" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://xinkl.cc/post-images/1673096524571.PNG" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://xinkl.cc/post-images/1673096534233.PNG" alt="" loading="lazy"></figure>
+<p>2.尝试要求国区做主号后，踢掉国区，国区在做主号拉其他人。国区账号还是可以正常使用土耳其区2T空间。也可以分享Apple music</p>
+<p>3.一定要用隔空投送 或 信息 土区邀请国区</p>
+<p>按顺序复制/粘贴即可</p>
+<p>街道地址<br>
+Bağdat Caddesi</p>
+<p>楼号、单元号、房间号<br>
+34</p>
+<p>邮编<br>
+34728</p>
+<p>城市<br>
+Kadıköy İstanbul</p>
+<p>区号 - 电话号码<br>
+0216 - 4680100</p>
+]]></content>
+    </entry>
+</feed>
