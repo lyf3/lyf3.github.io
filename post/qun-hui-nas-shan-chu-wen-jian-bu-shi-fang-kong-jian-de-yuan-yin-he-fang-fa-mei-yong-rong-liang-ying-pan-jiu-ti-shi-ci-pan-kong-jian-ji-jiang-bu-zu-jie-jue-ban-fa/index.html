@@ -1,0 +1,238 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">群晖NAS删除文件不释放空间的原因和方法；没用容量硬盘就提示「磁盘空间即将不足」解决办法；</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-06-07 / 2 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>1.删除了文件没清理回收站</p>
+<p>1.控制面板-系统-计划任务-新增计划任务-回收站 默认就行，每天0点自动清理。或直接手动清理即可。<br>
+2.控制面板-共享文件夹-动作-清空所有的回收站。<br>
+<img src="https://xinkl.cc/post-images/1623079610417.jpg" alt="" loading="lazy"></p>
+<p>2.同步软件版本控制一般设置5即可，有些同步软件即使删除了原文件和清空了回收站，但空间还是没有释放，因为有历史版本自动备份。如driver，cloud station等。</p>
+<p>可以控制面板-终端启用ssh服务。用putty,xshell等软件连接服务器，用root登录服务器。</p>
+<p>cd /volume1 [按 Enter] (变更目录到 /volume1 或您需要的目录)</p>
+<p>du -h -d 1 [按 Enter] (列出第一层子文件夹所占用的空间)</p>
+<p>通过此方式您即可找出哪个文件夹或档案占用了大量的磁盘空间。如果 @cloudstation  文件夹占用了很多空间，请停止通过 Cloud Station 来同步您的共享文件夹。如果@synlogydriver文件夹专用了很多空间，可以通过driver管理控制台 ，先计算使用空间，通过 版本资源管理器，操作-清除版本数据库即可释放空间。注意查看角色是不是你删除文件的用户，切换到你删除过文件的用户下。操作-显示删除文件，会发现刚才删除的文件还存在。没有彻底删除掉。可通过清除版本数据库即可释放空间。<br>
+<img src="https://xinkl.cc/post-images/1623079560001.jpg" alt="" loading="lazy"></p>
+<p>注意：<br>
+可以适当的设置几个版本，在「团队文件夹」下-版本控制-设置5个以下即可。（不是非常重要的文件夹建议1-2个版本即可）</p>
+<p>注：如果使用linux命令删除文件，资料将会丢失，请慎用！</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/8CgcZoBT6k/">
+            <span class="flex-auto">NAS</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  mac使用Shell(终端)SSH连接远程服务器
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/xiao-mi-men-chuang-chuan-gan-qi-gai-zao-xiaomi-sensor/">
+                <h3 class="post-title">
+                  小米门窗传感器改造 xiaomi sensor
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

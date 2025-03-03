@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">在群晖docker里开启mqtt服务器</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-09-21 / 2 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>1 <img src="https://xinkl.cc/post-images/1632191172022.png" alt="" loading="lazy"><br>
+2 <img src="https://xinkl.cc/post-images/1632191190267.png" alt="" loading="lazy"><br>
+3 <img src="https://xinkl.cc/post-images/1632191205096.png" alt="" loading="lazy"><br>
+4 <img src="https://xinkl.cc/post-images/1632191238165.png" alt="" loading="lazy"><br>
+5 <img src="https://xinkl.cc/post-images/1632191315947.png" alt="" loading="lazy"><br>
+5.1<img src="https://xinkl.cc/post-images/1632192014643.jpeg" alt="" loading="lazy"><br>
+5.2<img src="https://xinkl.cc/post-images/1632192026840.jpeg" alt="" loading="lazy"><br>
+设置一个特定端口不会和设备其他端口冲突<br>
+6<img src="https://xinkl.cc/post-images/1632191333308.png" alt="" loading="lazy"></p>
+<p>两个环境变量是：<br>
+可变：<code>PATH</code> 值：<code>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code><br>
+可变：<code>DEBIAN_FRONTEND</code>    值：<code>noninteractive</code><br>
+两个变量输入完成后点确定就可以了</p>
+<p>7 <img src="https://xinkl.cc/post-images/1632191357663.png" alt="" loading="lazy"><br>
+8 <img src="https://xinkl.cc/post-images/1632191378310.png" alt="" loading="lazy"><br>
+9 <img src="https://xinkl.cc/post-images/1632191388178.png" alt="" loading="lazy"></p>
+<p>终端那里新建个终端  输入 <code>bash</code> 然后输入：<br>
+<code>mosquitto_passwd -c pwfile.example pi</code><br>
+这行命令最后的pi是你MQTT服务器的用户名，可以输入自己想输的用户名。<br>
+输入完命令后会让你输入2次密码建立MQTT服务器的密码。<br>
+至此在群晖docker上配置MQTT服务器就完成了。</p>
+<p>HASS配置</p>
+<p>可通过两种方式进行配置，分别为：</p>
+<ol>
+<li>自动发现模式（<code>由于HASS更新，目前自动发现已失效，请使用下面的手动配置！手动配置需要删除discovery: true这句！</code>）</li>
+</ol>
+<pre><code>mqtt:
+  broker: 192.168.6.8（同一设备安装使用127.0.0.1 即可）
+  port: 1883
+  username: mqtt
+  password: mqtt
+  discovery: true
+</code></pre>
+<p>将其中的ip改为你mqtt服务器ip，用户和密码也相应修改即可。如果先前配置了mqtt，只需要在下方加入discovery: true即可。保存完，重启hass</p>
+<ol start="2">
+<li>手动配置模式（如果使用手动配置，应该先把mqtt服务器搭好，先设置模块再配置这里）</li>
+<li><a href="http://www.hassmart.com/products/switches/#tab=mqtt-test">MQTT测试工具</a> ←点我</li>
+</ol>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/_o99ym17e/">
+            <span class="flex-auto">homeassistant</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/n6HkDw6pOx/">
+            <span class="flex-auto">群晖</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/homekit-zi-dong-hua-jian-yi/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  HomeKit自动化建议
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/xiao-ai-kai-fa-ping-tai-jie-ru-hassshi-xian-xiao-ai-tong-xue-kong-zhi-hass-she-bei/">
+                <h3 class="post-title">
+                  小爱开发平台接入homeassistant，实现小爱同学控制homeassistant设备
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

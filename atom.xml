@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://xinkl.cc</id>
+    <title>lyf</title>
+    <updated>2025-03-03T06:10:01.703Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://xinkl.cc"/>
+    <link rel="self" href="https://xinkl.cc/atom.xml"/>
+    <subtitle>知识分享</subtitle>
+    <logo>https://xinkl.cc/images/avatar.png</logo>
+    <icon>https://xinkl.cc/favicon.ico</icon>
+    <rights>All rights reserved 2025, lyf</rights>
+    <entry>
+        <title type="html"><![CDATA[重装黑群辉系统，保留所有数据]]></title>
+        <id>https://xinkl.cc/post/chong-zhuang-hei-qun-hui-xi-tong-bao-liu-suo-you-shu-ju/</id>
+        <link href="https://xinkl.cc/post/chong-zhuang-hei-qun-hui-xi-tong-bao-liu-suo-you-shu-ju/">
+        </link>
+        <updated>2025-03-03T06:08:13.000Z</updated>
+        <content type="html"><![CDATA[<p>黑群辉系统非常容易损坏，我就经历过硬盘掉电导致的系统损坏。此时掌握无损重装系统的手段，就显得非常重要。以下方法在 DS3617_6.23-25426 下测试通过。</p>
+<p>将硬盘拔下，通过sata转usb，插入Windows电脑，打开 Disk Genius，找到硬盘中的三个分区，第一个为2.4G，存储着系统，第二个为2G，第三个非常大，为剩余的空间大小，存储着数据。</p>
+<p>选中第一个2.4G的分区，右键，格式化，选择FAT16格式，其他不变，点击确定格式化，完成后拔出硬盘，插回黑群辉。（多个硬盘选择SATA最靠前的硬盘格式化2.4G分区，其余硬盘先拔除。等系统做好后再把其他硬盘接回去恢复系统即可。）</p>
+<p>参考文献：</p>
+<p>https://www.youtube.com/watch?v=JfdjMiMdC9Q</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[homeassisaton，HomeKit断联处理办法]]></title>
+        <id>https://xinkl.cc/post/homeassisatonhomekit-duan-lian-chu-li-ban-fa/</id>
+        <link href="https://xinkl.cc/post/homeassisatonhomekit-duan-lian-chu-li-ban-fa/">
+        </link>
+        <updated>2024-08-25T13:20:47.000Z</updated>
+        <content type="html"><![CDATA[<p>1.新建文件夹，删除日志文件.db，log日志文件。其他文件不动复制到新的文件夹即可。<br>
+2.启动的时候使用最高权限打开，然后自动重启。新的文件夹。<br>
+<img src="https://xinkl.cc/post-images/1724592199702.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[n1盒子安装homeassistant]]></title>
+        <id>https://xinkl.cc/post/n1-he-zi-an-zhuang-homeassistant/</id>
+        <link href="https://xinkl.cc/post/n1-he-zi-an-zhuang-homeassistant/">
+        </link>
+        <updated>2024-08-11T10:23:16.000Z</updated>
+        <content type="html"><![CDATA[<p>arm版openwrt（n1盒子）安装home assistant，mqtt，zibgee2mqtt，node-red，portainer，这个是非hassio版本的，也就是不带supervisor商店的，我用的是f大60+o版本，docker内存只有5g，装完hassio内存只有800MB了，装个mqtt服务都不够，没扩容的n1就不要装hassio版本的了，我这一套教程，homeassistant需要的东西都有了，没必要再去装hassio版本的，</p>
+<p>前言：之前我安装过hassio版本的，但是安装好后，n1总会在10分钟之内因为爆内存死机，所有只能安装非hassio版本的home assistant。应该适用于所有arm版的docker，因为手里只有n1，不打保票其他的百分百也能装。<br>
+ps:本人是n1做旁路由安装的，该教程是我自己找遍全网摸索出来的，如有错误请指正。</p>
+<p>（openwrt里到挂载点找到自己的docker挂载点)<br>
+开始安装：</p>
+<p>1.安装portainer2.0完全汉化版</p>
+<pre><code>sh -c &quot;$(curl -kfsSl https://gitee.com/expin/public/raw/master/one.sh)&quot;
+</code></pre>
+<p>2.安装home assistant</p>
+<pre><code>docker run -d --restart=always --name=&quot;home-assistant&quot; -e TZ=Asia/Shanghai -v /mnt/mmcblk2p4/hassistant:/config -p 8123:8123 -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/aarch64-homeassistant:stable
+</code></pre>
+<p>3.安装可视化mqtt服务器</p>
+<pre><code>docker run -d --restart=always --name=&quot;emqx&quot; -v /etc/localtime:/etc/localtime -p 18083:18083 -p 1883:1883 killadm/aarch64-emqx:30
+</code></pre>
+<p>账号：admin。密码public。进入后台的端口是18083，连接mqtt的端口是1883</p>
+<p>4.配置hacs商店(本步骤需要特殊环境和GitHub账号，两个缺一不可。)<br>
+进入hassistant文件夹-在hassiatant目录下建立custom_components和www把hacs的压缩包解压，放到custom_components，命名为hacs<br>
+然后进入hassistant后台-点击配置-集成-右下角添加集成-搜索hacs（没有的话清楚浏览器缓存再进/重启hassistant）-等待一会根据提示打开github输入代码（刚安装好hacs不能立即用，要等几分钟，等hacs完全启动才行）ps:这一步很看你的网络环境，要等，不要急，添加集成一般5分钟之内会提示你GitHub授权，完全启动的时间20分钟左右。<br>
+hacs的压缩包：https://daimafengzi.lanzoui.com/iKm32tuvaoj</p>
+<p>5.连接homekit<br>
+直接更改根目录文件configuration.yaml添加代码：</p>
+<pre><code>tts:
+  - platform: google_translate
+homekit:
+group: !include groups.yaml
+</code></pre>
+<p>到这里安装就结束了，这是本人一步一步测试的除了那个zibgee2mqtt的安装，因为我没有z2m网关，所有也不知道怎么设置，若以后有设备再续z2m的设置方法，谢谢。</p>
+<p>N1安装 casaOS<br>
+<a href="https://www.bilibili.com/video/BV1sm421n73J/?share_source=copy_web&amp;vd_source=0d9d401ed97967bb285e97ad2617e06e">https://www.bilibili.com/video/BV1sm421n73J/?share_source=copy_web&amp;vd_source=0d9d401ed97967bb285e97ad2617e06e</a></p>
+<p>N1-斐讯-安装CASAOS-系统（家庭云系统）新增-HomeAssistant-新系统<br>
+<a href="http://mfyh1206.top:8001/index.php/archives/510/">http://mfyh1206.top:8001/index.php/archives/510/</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MACOS备忘录：利用fild快速打开本地文件]]></title>
+        <id>https://xinkl.cc/post/macos-bei-wang-lu-li-yong-fild-kuai-su-da-kai-ben-di-wen-jian/</id>
+        <link href="https://xinkl.cc/post/macos-bei-wang-lu-li-yong-fild-kuai-su-da-kai-ben-di-wen-jian/">
+        </link>
+        <updated>2024-05-19T06:59:51.000Z</updated>
+        <content type="html"><![CDATA[<p>重要问题：<br>
+记得让你的备忘录有磁盘权限。<br>
+设置---隐私与安全性--完全磁盘访问权限</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3967639"><label class="task-list-item-label" for="task-item-3967639"> 设置备忘录可以快捷打开目录对应文件。</label>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-598821"><label class="task-list-item-label" for="task-item-598821"> file:////Users/lyf/Downloads/音乐/刘德华/</label>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3124590"><label class="task-list-item-label" for="task-item-3124590"> 打开某个目录 例如：</label>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1743740"><label class="task-list-item-label" for="task-item-1743740"> 刘德华</label></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考链接<br>
+https://www.shenxiaohai.me/linking-local-files-to-Notion-with-iCloud/</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macos 14.2.1 壁纸路径]]></title>
+        <id>https://xinkl.cc/post/macos-1421-bi-zhi-lu-jing/</id>
+        <link href="https://xinkl.cc/post/macos-1421-bi-zhi-lu-jing/">
+        </link>
+        <updated>2024-02-02T12:57:28.000Z</updated>
+        <content type="html"><![CDATA[<p>搜索  command+shift+g</p>
+<p>安装壁纸<br>
+安装壁纸的方法非常简单，只需要前往以下路径</p>
+<p>/Library/Application Support/com.apple.idleassetsd/Customer/4KSDR240FPS</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Aruba AP 无法正常连接HOMEKIT解决办法]]></title>
+        <id>https://xinkl.cc/post/aruba-ap-wu-fa-zheng-chang-lian-jie-homekit-jie-jue-ban-fa/</id>
+        <link href="https://xinkl.cc/post/aruba-ap-wu-fa-zheng-chang-lian-jie-homekit-jie-jue-ban-fa/">
+        </link>
+        <updated>2024-01-30T10:24:30.000Z</updated>
+        <content type="html"><![CDATA[<p>按解决方案，按 1 2 3操作 即可正常连接HomeKit设备。有些Aruba系统版本只要操作方法1、3即可<br>
+问题症状：手机连接HomeKit设备的时候一直会出现以下几种问题：<br>
+1.无法接入网络<br>
+2.配件已经加入其他家庭<br>
+<img src="https://xinkl.cc/post-images/1706610667462.JPG" alt="" loading="lazy"><br>
+<img src="https://xinkl.cc/post-images/1706610674143.PNG" alt="" loading="lazy"></p>
+<p>方法一：关闭广播组（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611069799.png" alt="" loading="lazy"></p>
+<p>方法二：关闭Aruba 防火墙（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611121477.png" alt="" loading="lazy"></p>
+<p>方法三：开启对应的服务（必须）<br>
+<img src="https://xinkl.cc/post-images/1706611238189.png" alt="" loading="lazy"></p>
+<p>方法四：开启 igmp snooping（论坛找到的办法，但是暂时没找到设置的地方）</p>
+<p><a href="https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=9207&amp;extra=&amp;page=2&amp;mobile=no">https://bbs.hassbian.com/forum.php?mod=viewthread&amp;tid=9207&amp;extra=&amp;page=2&amp;mobile=no</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[避风港]]></title>
+        <id>https://xinkl.cc/post/bi-feng-gang/</id>
+        <link href="https://xinkl.cc/post/bi-feng-gang/">
+        </link>
+        <updated>2023-12-17T14:29:14.000Z</updated>
+        <content type="html"><![CDATA[<p>哪有什么避风港，风来了我就慢慢走，雨来了我就靠边走，打雷了我就捂着耳朵走。我一个人走了好久好久，我想把孩子教育好。也想把父母照顾好，还想把婚姻经营好，我想赚很多很多的钱，我想把什么都照顾好，可我什么都没有顾到，上有老不常伴左右，下有小不陪伴起成长。终有伴无心，好言三句，外有友却不能一醉方休。人到一定岁数，自己就是自己的屋檐，再也无法找到地方躲雨。</p>
+<p>规模变化一定不是为了驱利，而是水到渠成。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[文件夹权限 chmod 递归 mac 命令]]></title>
+        <id>https://xinkl.cc/post/wen-jian-jia-quan-xian-chmod-di-gui-mac-ming-ling/</id>
+        <link href="https://xinkl.cc/post/wen-jian-jia-quan-xian-chmod-di-gui-mac-ming-ling/">
+        </link>
+        <updated>2023-12-11T13:58:17.000Z</updated>
+        <content type="html"><![CDATA[<p>在 Mac 中，可以使用 chmod 命令对文件夹及其子文件夹和文件进行权限设置。</p>
+<p>递归设置权限的命令格式为：</p>
+<pre><code>chmod -R [权限设置] [文件夹路径]
+</code></pre>
+<p>例如，如果要给文件夹 /Users/username/test 和其所有子文件夹和文件赋予所有用户可读取权限，可以使用以下命令：</p>
+<pre><code>chmod -R 755 /Users/username/test
+</code></pre>
+<p>如果想要将文件夹和文件的所有权限赋给某个用户和用户组可读取权限，可以使用</p>
+<pre><code>chmod -R 770 /Users/username/test
+</code></pre>
+<p>如果想要具体了解更多权限设置，可以使用 mac chmod 查看。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MACOS 电脑 Adobe软件弹出访问钥匙串密码问题]]></title>
+        <id>https://xinkl.cc/post/adobe-ruan-jian-dan-chu-fang-wen-yao-chi-chuan-mi-ma-wen-ti/</id>
+        <link href="https://xinkl.cc/post/adobe-ruan-jian-dan-chu-fang-wen-yao-chi-chuan-mi-ma-wen-ti/">
+        </link>
+        <updated>2023-11-30T00:52:08.000Z</updated>
+        <content type="html"><![CDATA[<p>症状：</p>
+<pre><code>！打开Adobe软件后，疯狂弹出对话框要求输入钥匙串访问密码计
+</code></pre>
+<pre><code>解决方案：
+1.聚焦搜索“钥匙串访问”
+2.左侧边栏点击“登录”
+3.在右侧找到以“Adobe App info”开头的项目，通常有3个，全部删除
+4.找到“Adobe User info”删除
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[macos M1以上设备，开启允许从以下位置下载的应用程序（任何来源）功能]]></title>
+        <id>https://xinkl.cc/post/macos-m1-yi-shang-she-bei-kai-qi-yun-xu-cong-yi-xia-wei-zhi-xia-zai-de-ying-yong-cheng-xu-ren-he-lai-yuan-gong-neng/</id>
+        <link href="https://xinkl.cc/post/macos-m1-yi-shang-she-bei-kai-qi-yun-xu-cong-yi-xia-wei-zhi-xia-zai-de-ying-yong-cheng-xu-ren-he-lai-yuan-gong-neng/">
+        </link>
+        <updated>2023-11-22T07:34:44.000Z</updated>
+        <content type="html"><![CDATA[<p>1.总段输入这段代码，然后在输入密码即可。</p>
+<p>sudo spctl --master-disable</p>
+<p>注意事项<br>
+如果是最新的macOS 10.15及以上，<br>
+开启了允许任何来源，有些软件还是会报损坏，<br>
+这时候则需要进行以下操作：<br>
+以这种特权的命令去授予某个应用允许运行</p>
+<pre><code># sudo xattr -r -d com.apple.quarantine
+
+sudo xattr -r -d com.apple.quarantine 应用路径
+
+# 比如我装M1版本的语雀
+sudo xattr -rd com.apple.quarantine /Applications/语雀.app
+</code></pre>
+]]></content>
+    </entry>
+</feed>

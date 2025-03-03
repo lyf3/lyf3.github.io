@@ -1,0 +1,295 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">ESXI结合UPS停电后自动关机 (群晖 NUT服务器配合ESXI）</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-10-14 / 6 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>前言<br>
+这篇文章主要讲解 VMware ESXi 下安装 NUT 客户端实现断电自动关机，同样的，NUT 在 ESXi 下也提供了现成的软件包，我们只需要安装并配置好就行了，我这里采用的 ESXi 版本是 VMware ESXi 6.7.0 Update 3，其他版本应该也是通用的。<br>
+<code> 注意：UPS是连接群晖，开启 网络UPS服务器功能。</code><br>
+<img src="https://xinkl.cc/post-images/1634174816259.jpg" alt="" loading="lazy"></p>
+<p>准备工作<br>
+ESXi 默认是关闭主机 SSH 功能的，但是我们后续会使用到，所以我们首先要去 WEB 后台开启，进入 WEB 后台，打开 管理后，切换到 服务 选项卡，最后找到列表中的 TSM 和 TSM-SSH 服务将其启动，这样 SSH 功能就临时可以用了。<br>
+<img src="https://xinkl.cc/post-images/1634174858347.png" alt="" loading="lazy"><br>
+另外需要修改 ESXi 的默认软件安装策略，否则会阻止软件的安装，进入 WEB 后台后，打开 管理，切换到 安全和用户 选项卡，点击左侧的 接受级别 会弹出软件接受级别的设置，我们将其修改为 社区。<br>
+<img src="https://xinkl.cc/post-images/1634175955156.png" alt="" loading="lazy"><br>
+接着，我们下载 ESXi 平台下的 NUT 客户端软件包（下载地址：<a href="http://rene.margar.fr/download/1483/NutClient-ESXi-2.1.0.tar.gz">NutClient-ESXi-2.1.0.tar.gz</a> ）注：新版本会一直更新根据最新为准。，将下载好的软件包上传到 ESXi 的 /tmp 目录待安装使用。<br>
+下载地址：<a href="http://rene.margar.fr/download/1483/">http://rene.margar.fr/download/1483/</a><br>
+软件下载地址：<a href="http://rene.margar.fr/download/1483/NutClient-ESXi-2.1.0.tar.gz">http://rene.margar.fr/download/1483/NutClient-ESXi-2.1.0.tar.gz</a></p>
+<p>安装 NUT 客户端<br>
+通过 SSH 连接到 ESXi 主机，然后进入到 /tmp 目录后，解压缩 NUT 软件包，最后执行安装脚本 upsmon-install.sh，返回如下的安装信息代表安装成功了。</p>
+<pre><code>$ cd /tmp
+$ tar -xzvf NutClient-ESXi-2.1.0.tar.gz
+$ sh upsmon-install.sh
+Installation Result
+   Message: Operation finished successfully.
+   Reboot Required: false
+   VIBs Installed: Margar_bootbank_upsmon_2.7.4-2.1.0
+   VIBs Removed:
+   VIBs Skipped:
+</code></pre>
+<p>配置 NUT 客户端<br>
+NUT 客户端安装成功后，我们返回到 ESXi 的 WEB 后台，打开 管理后，切换到 系统 选项卡，在 高级设置 菜单的右边列表中找到 NUT 相关的设置项，可以直接在右上角的搜索中输入 NUT 进行快速查找，一共有6个参数设置，如果没有，可以尝试重启 ESXi 主机后再看，如下图所示：<br>
+<img src="https://xinkl.cc/post-images/1634176455335.png" alt="" loading="lazy"><br>
+各参数作用说明：</p>
+<pre><code>UserVars.NutFinalDelay：关闭 ESXi 前的等待时间，单位为秒。
+UserVars.NutMailTo：接收邮件通知的邮箱地址，如果没有开启邮件通知，这里不用设置。
+UserVars.NutPassword：密码，如果没有在群晖上修改过，这里统一填：secret
+UserVars.NutSendMail：关机前是否发送邮件通知（0：不发送，1：发送）
+UserVars.NutUpsName：监听的网络 UPS 服务器，例子：ups@192.168.99.10（这里填写你们自己群晖地址）
+UserVars.NutUser：用户名，如果没有在群晖上修改过，这里统一填：monuser
+</code></pre>
+<p>参数配置完成后，需要重新启动 NutClient 服务，进入 WEB 后台，打开 管理后，切换到 服务 选项卡，找到 NutClient 服务，然后点击上方的 重新启动 按钮，以后每次修改配置参数后，都需要重启该服务，另外需将该服务设置为 随主机启动和停止。<br>
+<img src="https://xinkl.cc/post-images/1634176496123.png" alt="" loading="lazy"><br>
+到这里，我们的 ESXi 服务器已经可以实现断电自动关机了，但是 ESXi 平台上的虚拟机并不会安全的关闭，我们还需要在 ESXi 上设置虚拟机在主机关闭前自动关机，在主机启动后自动开机，前提条件是虚拟机已经安装好了 VMware Tools，设置方法：进入 WEB 后台，打开 管理后，切换到 系统 选项卡，打开左侧的 自动启动 菜单，然后点击最上方的 编辑设置，按下图设置：<br>
+<img src="https://xinkl.cc/post-images/1634176517345.png" alt="" loading="lazy"><br>
+上面的设置只是系统一个总的自动启动停止开关，我们还需要对每台虚拟机进行启用设置，依次点击列表里的虚拟机进行 启用。<br>
+<img src="https://xinkl.cc/post-images/1634176533711.png" alt="" loading="lazy"></p>
+<pre><code>注意：
+上述执行完后可以通过ssh命令读取是否可以取到相关ups的数值：/opt/nut/bin/upsc ups@192.168.2.88
+都完成后建议重启esxi
+最后验证防火墙设置，执行 esxcli network firewall ruleset list，如果看到 NutServer 为 ture
+则表示正常，最后在 ESXi 的服务里面设置 Network UPS Tools client 服务随系统启动即可！
+注：计算时间当UPS进入供电状态及开始倒计时关机
+</code></pre>
+<pre><code>注意：NUT是当UPS低于设定低电量的时候才会发送报警信息，然后ESXI进行关机操作。
+battery.charge.low: 20，电量低于20才进行报警信息.这样会导致设备长时间一直在使用UPS的电量
+</code></pre>
+<p><code>我现在的操作方式是将群晖设置为1分钟后进入安全模式（ESXI的 UserVars.NutFinalDelay 设定为默认的5秒），然后勾选上（当系统进入安全模式时将不断电系统关机），实际测试可以在充足的时间将ESXI关机并且UPS断电。（将ESXI 虚拟机 的关机延迟时间尽量设置成最短的时间 建议（3-20内）数据无关紧要的设置1-2秒即可</code></p>
+<p><code>当以上按我的设置好后，实现原理如下：</code><br>
+<code>当群晖延迟2分钟后进入安全模式后会发送低电量即将关机信息，这中间会有1分30秒（时间一到群晖会发送命令给UPS直接断电）左右的时间给ESXI关机。所以我在ESXI设置的延迟时间是5秒。让ESXI的系统可以有足够的时间关机。如果时间不足的情况下会导致ESXI未关机UPS就已经断电了。（全程3分30秒左右所有设备关闭并且断电。来电后群晖自动开机）</code></p>
+<p>参考：（具体还是要根据设备来灵活调整）<br>
+<img src="https://xinkl.cc/post-images/1634187267528.jpg" alt="" loading="lazy"><br>
+<img src="https://xinkl.cc/post-images/1634187275184.jpg" alt="" loading="lazy"><br>
+<img src="https://xinkl.cc/post-images/1634187280648.jpg" alt="" loading="lazy"></p>
+<p>需要接入homeassistant可以参考以下链接：<br>
+<a href="https://bbs.hassbian.com/thread-9894-1-1.html">https://bbs.hassbian.com/thread-9894-1-1.html</a><br>
+其他参考<br>
+<a href="https://www.mobibrw.com/2019/18598">https://www.mobibrw.com/2019/18598</a></p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/_o99ym17e/">
+            <span class="flex-auto">homeassistant</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/sQ2DMu-AdL/">
+            <span class="flex-auto">ESXI</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/n6HkDw6pOx/">
+            <span class="flex-auto">群晖</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/docker-da-jian-koushscrypted-lian-jie-she-xiang-tou/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  群晖docker搭建 koush/scrypted 连接摄像头
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/gridea-bo-ke-zhong-gitalk-ping-lun-she-zhi-jiao-cheng/">
+                <h3 class="post-title">
+                  gridea博客中gitalk评论设置教程
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

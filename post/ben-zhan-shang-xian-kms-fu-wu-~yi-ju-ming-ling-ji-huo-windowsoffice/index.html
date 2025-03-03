@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">KMS服务~一句命令激活windows/office</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-06-29 / 3 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>命令激活WINDOWS<br>
+只要确保的下载的是VL批量版本并且没有手动安装过任何key<br>
+使用管理员权限运行cmd执行</p>
+<pre><code>slmgr /skms kms.03k.org
+</code></pre>
+<p>这句命令的意思是，把kms服务器地址设置（set kms）为kms.03k.org.</p>
+<pre><code>slmgr /ato
+</code></pre>
+<hr>
+<p>对于下面列表里面含有的产品的VL版本或者能使用key进入kms通道的产品，都支持使用kms激活。另外对于Window7，如果你的bios含有slic表，会有无法使用kms的情况。<br>
+office2016 https://technet.microsoft.com/zh-cn/library/dn385360(v=office.16).aspx<br>
+office2013 https://technet.microsoft.com/ZH-CN/library/dn385360.aspx<br>
+office2010 https://technet.microsoft.com/ZH-CN/library/ee624355(v=office.14).aspx<br>
+Server/Windows https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys</p>
+<p>命令查看系统版本：</p>
+<pre><code>wmic os get caption
+</code></pre>
+<p>得到对应key之后，使用管理员权限运行cmd执行安装key：</p>
+<pre><code>slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx
+</code></pre>
+<p>一句命令激活OFFICE<br>
+首先你的OFFICE必须是VOL版本，否则无法激活。<br>
+找到你的office安装目录，比如C:\Program Files (x86)\Microsoft Office\Office16</p>
+<p>64位的就是C:\Program Files\Microsoft Office\Office16</p>
+<p>office16是office2016，office15就是2013，office14就是2010.</p>
+<p>然后目录对的话，该目录下面应该有个OSPP.VBS。</p>
+<p>接下来我们就cd到这个目录下面，例如（请更改为自己的实际安装目录）：</p>
+<pre><code>cd &quot;C:\Program Files (x86)\Microsoft Office\Office16&quot; 
+</code></pre>
+<p>如果你不知道你的office装在哪个目录，可以打开一个程序比如word，然后用打开任务管理员右键选择“打开文件所在的位置”。</p>
+<p>然后执行注册kms服务器地址：</p>
+<pre><code>cscript ospp.vbs /sethst:kms.03k.org
+</code></pre>
+<p>/sethst参数就是指定kms服务器地址。<br>
+一般ospp.vbs可以拖进去cmd窗口，所以也可以这么弄：</p>
+<pre><code>cscript &quot;C:\Program Files (x86)\Microsoft Office\Office16\OSPP.VBS&quot; /sethst:kms.03k.org
+</code></pre>
+<p>一般来说，“一句命令已经完成了”，但一般office不会马上连接kms服务器进行激活，所以我们额外补充一条手动激活命令：</p>
+<pre><code>cscript ospp.vbs /act
+</code></pre>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/jmTfio8sev/">
+            <span class="flex-auto">Windows</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/nas-qun-hui-cloud-station-server-ban-ben-wen-ti-dao-zhi-ci-pan-kong-jian-0ci-pan-sui-pian-zheng-li-hou-ke-yong-kong-jian-wei-0jie-jue-ban-fa/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  Nas 群晖 （Cloud Station Server版本问题导致磁盘空间0）（磁盘碎片整理后可用空间为0）解决办法
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/mac-shi-yong-shellzhong-duan-ssh-lian-jie-yuan-cheng-fu-wu-qi/">
+                <h3 class="post-title">
+                  mac使用Shell(终端)SSH连接远程服务器
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

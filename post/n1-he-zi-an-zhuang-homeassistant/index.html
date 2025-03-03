@@ -1,0 +1,252 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">n1盒子安装homeassistant</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2024-08-11 / 3 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>arm版openwrt（n1盒子）安装home assistant，mqtt，zibgee2mqtt，node-red，portainer，这个是非hassio版本的，也就是不带supervisor商店的，我用的是f大60+o版本，docker内存只有5g，装完hassio内存只有800MB了，装个mqtt服务都不够，没扩容的n1就不要装hassio版本的了，我这一套教程，homeassistant需要的东西都有了，没必要再去装hassio版本的，</p>
+<p>前言：之前我安装过hassio版本的，但是安装好后，n1总会在10分钟之内因为爆内存死机，所有只能安装非hassio版本的home assistant。应该适用于所有arm版的docker，因为手里只有n1，不打保票其他的百分百也能装。<br>
+ps:本人是n1做旁路由安装的，该教程是我自己找遍全网摸索出来的，如有错误请指正。</p>
+<p>（openwrt里到挂载点找到自己的docker挂载点)<br>
+开始安装：</p>
+<p>1.安装portainer2.0完全汉化版</p>
+<pre><code>sh -c &quot;$(curl -kfsSl https://gitee.com/expin/public/raw/master/one.sh)&quot;
+</code></pre>
+<p>2.安装home assistant</p>
+<pre><code>docker run -d --restart=always --name=&quot;home-assistant&quot; -e TZ=Asia/Shanghai -v /mnt/mmcblk2p4/hassistant:/config -p 8123:8123 -v /etc/localtime:/etc/localtime:ro --net=host homeassistant/aarch64-homeassistant:stable
+</code></pre>
+<p>3.安装可视化mqtt服务器</p>
+<pre><code>docker run -d --restart=always --name=&quot;emqx&quot; -v /etc/localtime:/etc/localtime -p 18083:18083 -p 1883:1883 killadm/aarch64-emqx:30
+</code></pre>
+<p>账号：admin。密码public。进入后台的端口是18083，连接mqtt的端口是1883</p>
+<p>4.配置hacs商店(本步骤需要特殊环境和GitHub账号，两个缺一不可。)<br>
+进入hassistant文件夹-在hassiatant目录下建立custom_components和www把hacs的压缩包解压，放到custom_components，命名为hacs<br>
+然后进入hassistant后台-点击配置-集成-右下角添加集成-搜索hacs（没有的话清楚浏览器缓存再进/重启hassistant）-等待一会根据提示打开github输入代码（刚安装好hacs不能立即用，要等几分钟，等hacs完全启动才行）ps:这一步很看你的网络环境，要等，不要急，添加集成一般5分钟之内会提示你GitHub授权，完全启动的时间20分钟左右。<br>
+hacs的压缩包：https://daimafengzi.lanzoui.com/iKm32tuvaoj</p>
+<p>5.连接homekit<br>
+直接更改根目录文件configuration.yaml添加代码：</p>
+<pre><code>tts:
+  - platform: google_translate
+homekit:
+group: !include groups.yaml
+</code></pre>
+<p>到这里安装就结束了，这是本人一步一步测试的除了那个zibgee2mqtt的安装，因为我没有z2m网关，所有也不知道怎么设置，若以后有设备再续z2m的设置方法，谢谢。</p>
+<p>N1安装 casaOS<br>
+<a href="https://www.bilibili.com/video/BV1sm421n73J/?share_source=copy_web&amp;vd_source=0d9d401ed97967bb285e97ad2617e06e">https://www.bilibili.com/video/BV1sm421n73J/?share_source=copy_web&amp;vd_source=0d9d401ed97967bb285e97ad2617e06e</a></p>
+<p>N1-斐讯-安装CASAOS-系统（家庭云系统）新增-HomeAssistant-新系统<br>
+<a href="http://mfyh1206.top:8001/index.php/archives/510/">http://mfyh1206.top:8001/index.php/archives/510/</a></p>
+
+        </div>
+
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/homeassisatonhomekit-duan-lian-chu-li-ban-fa/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  homeassisaton，HomeKit断联处理办法
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/macos-bei-wang-lu-li-yong-fild-kuai-su-da-kai-ben-di-wen-jian/">
+                <h3 class="post-title">
+                  MACOS备忘录：利用fild快速打开本地文件
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

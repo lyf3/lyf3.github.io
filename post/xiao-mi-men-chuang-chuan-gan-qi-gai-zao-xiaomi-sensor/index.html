@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>lyf</title>
+<meta name="description" content="知识分享" />
+<link rel="shortcut icon" href="https://xinkl.cc/favicon.ico?v=1740982198627">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://xinkl.cc/styles/main.css">
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://xinkl.cc">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://xinkl.cc/images/avatar.png?v=1740982198627" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">lyf</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700"><a href="https://beian.miit.gov.cn">闽ICP备16022240号</a></div>
+    <a class="rss" href="https://xinkl.cc/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">小米门窗传感器改造 xiaomi sensor</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-05-12 / 7 min read
+        </div>
+        
+        <div class="post-content yue">
+          <p>Sometimes you want to integrate some of the old technology into a smart home environment, but there is not the right sensor available. So why not build one yourself or modify an existing one into a DIY Zigbee logic sensor? That’s what happened to me a while back when I was looking for a way to monitor the doorbell. In some rooms it is not easy to hear and integration into an existing smart home environment offers some additional possibilities.<br>
+Since my devices mainly come from Xiaomi / Mijia, the sensor should of course fit (Zigbee output). A first try with a Mijia vibration sensor was OK, but not very reliable. Therefore, I have built a sensor, which I can switch directly to the AC voltage parallel to the bell and it reports the state to Mi Home. I think there are many other uses for this easy and cheap sensor.</p>
+<p>Guest post by Volkmar L. (Antenne519)</p>
+<p>Contents [hide]</p>
+<p>1 What is needed?<br>
+2 Assembly of the DIY Zigbee Logic Sensor<br>
+2.1 I installed an optocoupler parallel to this contact, which allows me to monitor any sources for ON / Off.<br>
+2.2 First, open the sensor and remove the button cell. The circuit board can be easily removed (locking lugs).<br>
+2.3 These pads are used to connect the output of the optocoupler (emitter GND, collector +).<br>
+2.4 The optocoupler with the parallel to the circuit board bent terminals was fixed with a dab of glue.<br>
+2.5 The two opposite pins are the input of the optocoupler. By using an AC model with 2 LEDs, the polarity does not matter later.<br>
+2.6 The finished sensor can now be put back together, the battery is inserted and the lid closed.<br>
+3 Results / Conclusion</p>
+<p>What is needed?</p>
+<ul>
+<li>Door/Window sensor from Xiaomi / Mijia (MCCGQ01LM)</li>
+<li>Optocoupler, preferably with AC input e.g. a SHARP PC81411NTP (I purchased it very cheap at Pollin Elektronik)</li>
+<li>a SMD resistor for current limiting (depending on the voltage and current requirements of the coupler, for example 10 KOhm)</li>
+<li>Thin 2-core wire</li>
+</ul>
+<p><a href="https://gadget-freakz.com/product/xiaomi-aqara-window-door-sensor/">Xiaomi Aqara Window Door Sensor</a></p>
+<p>Assembly of the DIY Zigbee Logic Sensor<br>
+The door sensor MCCGQ01LM has a reed contact, which is normally operated by the supplied magnet.</p>
+<p>Total Time: 30 minutes</p>
+<p>I installed an optocoupler parallel to this contact, which allows me to monitor any sources for ON / Off.<br>
+Conveniently, the MCCGQ01LM already has two pads at the appropriate location, which are connected to the reed contact. The optocoupler ensures potential separation.</p>
+<p>First, open the sensor and remove the button cell. The circuit board can be easily removed (locking lugs).<br>
+After opening the sensor, the pads can be seen on the free space of the board. These are labeled GND (Ground / -) and D+.<br>
+<img src="https://xinkl.cc/post-images/1620828570948.jpg" alt="" loading="lazy"></p>
+<p>Positive pole D+ marked in red</p>
+<p>These pads are used to connect the output of the optocoupler (emitter GND, collector +).<br>
+A component in a DIL housing with “pins” could be plugged directly into the pads, with the SMD type I used, I have slightly modified the pins and connected them with small wires to the PCB.</p>
+<figure data-type="image" tabindex="1"><img src="https://xinkl.cc/post-images/1620828605340.jpg" alt="" loading="lazy"></figure>
+<p>The optocoupler with the parallel to the circuit board bent terminals was fixed with a dab of glue.<br>
+You must be careful that the component does not protrude too far over the small sticker with QR code, otherwise the round support of the lid will find no place.<br>
+(Note the round impression of the foot, this space must remain free, so install the opto-coupler a bit at an angle.)</p>
+<p>The two opposite pins are the input of the optocoupler. By using an AC model with 2 LEDs, the polarity does not matter later.<br>
+Since the SHARP PC81411 is also a “low power” model, it needs very little current to trip. With an input level of 9..12V AC to be monitored I have therefore chosen a 10 KOhm resistor to limit the current and soldered it directly to one of the pins.<br>
+However, the input voltage should not exceed about 48..60V, otherwise you must better isolate everything and choose a resistor capable for a higher voltage.<br>
+A 2-core cable leads the input out of the housing through a drilled hole.</p>
+<figure data-type="image" tabindex="2"><img src="https://xinkl.cc/post-images/1620828632543.jpg" alt="" loading="lazy"></figure>
+<p>The finished sensor can now be put back together, the battery is inserted and the lid closed.<br>
+The cable can then be fit with a plug or soldered directly to the source. The modified unit can still be used as originally intended (operated by the magnet) because the reed contact is still in place and will work as before the mod.</p>
+<figure data-type="image" tabindex="3"><img src="https://xinkl.cc/post-images/1620828694407.jpg" alt="" loading="lazy"></figure>
+<p>Results / Conclusion<br>
+Due to the built-in resistor, the Zigbee logic sensor can be directly connected to the doorbell (about 9V AC). When a voltage is applied (someone operates the bell) the opto-coupler turns the sensor on and it can e.g. send the signal to a Mijia Gateway as a ringtone or report it to your smartphone. The Mi Home app also creates logs about the switching process.<br>
+I have used the Xiaomi / Mijia door contact sensor (MCCGQ01LM) as it is compatible with probably all Mijia gateways (and is also included in the Xiaomi sensor kit sold in Europe)<br>
+The comparable sensor from Aqara may also be suitable. Since the door contact sensor used is very cheap and uses the Zigbee protocol, I could imagine that there are a variety of other uses for my modified version. Whenever a logic level (voltage on / off) is to be monitored, it is applicable.</p>
+<p>Next project planned: Connect the DIY sensor to a 230V AC 20A current sensor module to monitor the washing machine…</p>
+<p>This is a guest post by Volkmar L (nickname Antenne519). He approached us about sharing this project with the community and we are very glad he wanted to share his experiences with us. Thank you very much for this contribution! If you also want to share an interesting home automation project with us, feel free to drop us a message.</p>
+<p>原链接：<a href="https://gadget-freakz.com/build-your-own-universal-zigbee-logic-sensor-by-modifying-a-xiaomi-sensor/#I_installed_an_optocoupler_parallel_to_this_contact_which_allows_me_to_monitor_any_sources_for_ON_Off">https://gadget-freakz.com/build-your-own-universal-zigbee-logic-sensor-by-modifying-a-xiaomi-sensor/#I_installed_an_optocoupler_parallel_to_this_contact_which_allows_me_to_monitor_any_sources_for_ON_Off</a></p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://xinkl.cc/tag/_o99ym17e/">
+            <span class="flex-auto">homeassistant</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://xinkl.cc/post/qun-hui-nas-shan-chu-wen-jian-bu-shi-fang-kong-jian-de-yuan-yin-he-fang-fa-mei-yong-rong-liang-ying-pan-jiu-ti-shi-ci-pan-kong-jian-ji-jiang-bu-zu-jie-jue-ban-fa/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  群晖NAS删除文件不释放空间的原因和方法；没用容量硬盘就提示「磁盘空间即将不足」解决办法；
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://xinkl.cc/post/bo-ke-wen-zhang-tui-jian/">
+                <h3 class="post-title">
+                  博客文章推荐
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://xinkl.cc/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>
